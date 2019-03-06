@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+	@import "~bootstrap/dist/css/bootstrap.css";
+	@import "~font-awesome/css/font-awesome.css";
+
+.btn {
+  border-radius: 50px!important;
+}
+
+.navbar {
+  padding: 0.5rem!important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem!important;
+}

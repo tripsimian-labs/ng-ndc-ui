@@ -1,0 +1,24 @@
+ {
+  "/airgateway/*": {
+    "target":  {
+       "host": "proxy.airgateway.net",
+       "protocol": "https:",
+       "port": 443
+     },
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {"^/airgateway" : ""},
+    "logLevel": "debug"
+  }, 
+  "/airtechzone/*": {
+    "target":  {
+       "host": "api.airtech.zone",
+       "protocol": "http:",
+       "port": 80
+     },
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {"^/airtechzone" : ""},
+    "logLevel": "debug"
+  }
+}

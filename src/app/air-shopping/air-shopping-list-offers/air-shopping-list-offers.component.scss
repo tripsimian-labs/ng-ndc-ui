@@ -1,0 +1,23 @@
+.offer-card {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.offer-leg {
+  height: 30px;
+  width: 2px;
+  background-color: #bbb;
+}
+
+.offer-leg-circles {
+  &:before, &:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 100%;
+    background: #fff;
+    border: 2px solid #bbb;
+    z-index: 2;
+  }
+}

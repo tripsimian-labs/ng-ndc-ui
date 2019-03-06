@@ -1,0 +1,69 @@
+<p>
+  air-shopping-list-offers works!
+</p>
+<div class="row justify-content-center" *ngIf="airShoppingOffers">
+	<div class="col-sm-12"*ngFor="let airShoppingOffer of airShoppingOffers.result; let i=index;">
+	    <div class="offer-card card" (click)="showDetails = !showDetails">
+		<div *ngIf="airShoppingOffer.error">{{airShoppingOffer.error}}</div>
+		<a href="{{airShoppingOffer.offerID}}"> Offer# {{i+1}} </a>
+		  <div *ngFor="let flight of airShoppingOffer.flights">
+			  <div class="card-body">
+				<div class="row align-items-center">
+				  <div class="col-sm-9">
+					<div class="row align-items-center">
+					  <div class="col-3 text-center">
+						<h4 class="card-title">{{flight.flightSegments[0].originDestination.departure.time}}</h4>
+						<h5 class="card-subtitle mb-2 text-muted">{{flight.flightSegments[0].originDestination.departure.airportCode}}</h5>
+					  </div>
+					  <div class="col-6 text-center align-self-center">
+						<div class="row align-items-center justify-content-center">
+						  <div class="col">
+							<p class="m-0">
+							  <small>{{flightTime(flight.flightSegments[0].flightDetail.flightDuration)}}</small>
+							</p>
+						  </div>
+						  <div class="col-1"></div>
+						</div>
+					  </div>
+					  <div class="col-3 text-center">
+						<h4 class="card-title">{{flight.flightSegments[flight.flightSegments.length-1].originDestination.arrival.time}}</h4>
+						<h5 class="card-subtitle mb-2 text-muted">{{flight.flightSegments[flight.flightSegments.length-1].originDestination.arrival.airportCode}}</h5>
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-sm-3 text-center">
+					<h3 class="card-text mb-3">{{airShoppingOffer.price.totalPrice | currency:'EUR'}}</h3>
+					<button href="#" class="btn btn-primary" (click)="onSelect($event)">Select</button>
+				  </div>
+				</div>
+			  </div>
+			  <div class="card-body" *ngIf="showDetails">
+				<div *ngFor="let flightSegment of flight.flightSegments" style="padding: 0 30px 10px 30px;">
+				  <table cellpadding="10" style="width: 100%;">
+					<tr>
+					  <td align="center">
+						<img style="width: 30px;" [src]="logoUrl(flightSegment.marketingCarrier.airlineID)" alt="">
+					  </td>
+					  <td colspan="2">{{flightSegment.marketingCarrier.airlineID}}{{flightSegment.marketingCarrier.flightNumber}}</td>
+					</tr>
+					<tr>
+					  <td rowspan="2" width="5%" align="center" style="padding: 2px;">
+						<div class="offer-leg-circles">
+						  <div class="offer-leg"></div>
+						</div>
+					  </td>
+					  <td width="10%">{{flightSegment.originDestination.departure.time}}</td>
+					  <td>{{flightSegment.originDestination.departure.airportCode}}</td>
+					</tr>
+					<tr>
+					  <td>{{flightSegment.originDestination.arrival.time}}</td>
+					  <td>{{flightSegment.originDestination.arrival.airportCode}}</td>
+					</tr>
+				  </table>
+				</div>
+			  </div>			  		  
+		  </div>
+		
+	  </div>
+	</div>
+</div>

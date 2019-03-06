@@ -1,0 +1,74 @@
+<p>
+  air-shopping-basic-search works!
+</p>
+<form>
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+      <label for="from">From</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-plane-departure"></i>
+          </div>
+        </div>
+        <input type="text" class="form-control text-uppercase"
+               name="from" id="from" [(ngModel)]="from">
+      </div>
+    </div>
+
+    <div class="col-sm-3 my-1">
+      <label for="to">To</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-plane-arrival"></i>
+          </div>
+        </div>
+        <input type="text" class="form-control text-uppercase"
+               name="to" id="to" [(ngModel)]="to">
+      </div>
+    </div>
+
+    <div class="col-sm-3 my-1">
+      <label for="dates">Departure Date</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+        </div>
+        <input type="text"
+               id="dates"
+               name="dates"
+               placeholder="Dates"
+               class="form-control"
+               [(ngModel)]="depart"
+               bsDatepicker>
+      </div>
+    </div>
+
+    <div class="col-sm-2 my-1">
+      <label for="cabin">Cabin Class</label>
+      <select class="form-control" name="cabin" d="cabin" [(ngModel)]="cabin">
+        <option *ngFor="let cabinClass of cabinClasses" [value]="cabinClass.value">{{cabinClass.name}}</option>
+      </select> 
+    </div>
+
+    <div class="col-sm-1 my-1">
+      <label for="travellers">Travellers</label>
+      <select class="form-control"  id="travellers" name="travellers" [(ngModel)]="travellers">
+	       <option *ngFor="let t of travellersList"  [value]="t.value">{{t.name}}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div class="row justify-content-end"> 
+    <div class="col-auto my-1">
+      <button type="button" class="btn btn-lg btn-primary"
+              (click)="onSubmit()"
+              style=" border-color: #5CB85B; background-color: #5CB85B">Search &raquo;</button>
+    </div>
+  </div>
+</form>
+<!-- The following should be activated in air-shopping.component.html (not in air-shopping-basic-search.component.html)-->
+<!--ndc-air-shopping-list-offers [airShoppingOffers]="airShoppingOffersSearch"></ndc-air-shopping-list-offers-->
